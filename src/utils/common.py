@@ -25,10 +25,12 @@ def copy_files(source_download_dir: str, local_data_dir: str) -> None:
     N = len(list_of_files)
 
     for file in list_of_files:
-        src = os.path.join(source_download_dir, file)
-        dest = os.path.join(local_data_dir, file)
+        source = os.path.join(source_download_dir, file)
+        destination = os.path.join(local_data_dir, file)
 
-        shutil.copy_files(())
+        shutil.copy_files(source,destination)
+    
+    logging.info(f"copy of files succeeded")
 
 
 def save_json(path: str, data: dict) -> None:
