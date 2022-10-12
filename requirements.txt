@@ -1,5 +1,6 @@
 ### dependency
 black==22.10.0
+pandas
 tqdm==4.64.1
 dvc==2.10.2
 tensorflow==2.10.0
