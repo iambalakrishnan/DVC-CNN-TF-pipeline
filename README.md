@@ -1,5 +1,5 @@
-# dvc-project-template
-DVC project template
+# DVC-CNN-TF-pipeline
+DVC project for Deep Learning usecase using tensorflow
 
 ## STEPS -
 
