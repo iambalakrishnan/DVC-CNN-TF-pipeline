@@ -20,12 +20,12 @@ def get_data(config_path: str) -> None:
     source_download_dirs = config["source_download_dirs"]
     local_data_dirs = config["local_data_dirs"]
 
-    N = len(source_download_dirs)
+    #N = len(source_download_dirs)
     for source_download_dir, local_data_dir in tqdm(
         zip(source_download_dirs, local_data_dirs),
-        total=N,
+        total=2,
         colour="red",
-        desc="copying directory:",
+        desc="list of the folders",
     ):
         create_directories([local_data_dir])
         copy_files(source_download_dir, local_data_dir)
@@ -38,9 +38,9 @@ if __name__ == '__main__':
 
     try:
         logging.info("\n********************")
-        logging.info(f">>>>> stage {STAGE} started <<<<<")
-        get_data(config_path=parsed_args.config, params_path=parsed_args.params)
-        logging.info(f">>>>> stage {STAGE} completed!<<<<<\n")
+        logging.info(f">>>>> stage one started <<<<<")
+        get_data(config_path=parsed_args.config)
+        logging.info(f">>>>> stage one completed! all the data are saved in local<<<<<\n")
     except Exception as e:
         logging.exception(e)
         raise e

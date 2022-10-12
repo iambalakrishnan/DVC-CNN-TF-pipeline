@@ -5,7 +5,6 @@ import logging
 import time
 import pandas as pd
 import json
-import shutil
 
 def read_yaml(path_to_yaml: str) -> dict:
     with open(path_to_yaml) as yaml_file:
@@ -28,7 +27,7 @@ def copy_files(source_download_dir: str, local_data_dir: str) -> None:
         source = os.path.join(source_download_dir, file)
         destination = os.path.join(local_data_dir, file)
 
-        shutil.copy_files(source,destination)
+        shutil.copy(source,destination)
     
     logging.info(f"copy of files succeeded")
 

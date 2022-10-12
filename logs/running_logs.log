@@ -1,0 +1,59 @@
+[2022-10-12 12:48:41,498: INFO: stage_01_get_data]: 
+********************
+[2022-10-12 12:48:41,498: ERROR: stage_01_get_data]: name 'STAGE' is not defined
+Traceback (most recent call last):
+  File "src/stage_01_get_data.py", line 41, in <module>
+    logging.info(f">>>>> stage {STAGE} started <<<<<")
+NameError: name 'STAGE' is not defined
+[2022-10-12 12:51:00,650: INFO: stage_01_get_data]: 
+********************
+[2022-10-12 12:51:00,650: INFO: stage_01_get_data]: >>>>> stage one started <<<<<
+[2022-10-12 12:51:00,651: ERROR: stage_01_get_data]: 'Namespace' object has no attribute 'params'
+Traceback (most recent call last):
+  File "src/stage_01_get_data.py", line 42, in <module>
+    get_data(config_path=parsed_args.config, params_path=parsed_args.params)
+AttributeError: 'Namespace' object has no attribute 'params'
+[2022-10-12 12:51:53,565: INFO: stage_01_get_data]: 
+********************
+[2022-10-12 12:51:53,565: INFO: stage_01_get_data]: >>>>> stage one started <<<<<
+[2022-10-12 12:51:53,570: INFO: common]: yaml file : configs/config.yaml loaded successfully
+[2022-10-12 12:51:53,630: INFO: common]: created directory at : data/cat
+[2022-10-12 12:51:53,637: ERROR: stage_01_get_data]: module 'shutil' has no attribute 'copy_files'
+Traceback (most recent call last):
+  File "src/stage_01_get_data.py", line 42, in <module>
+    get_data(config_path=parsed_args.config)
+  File "src/stage_01_get_data.py", line 31, in get_data
+    copy_files(source_download_dir, local_data_dir)
+  File "h:\aiops\dvc-cnn-tf-pipeline\src\utils\common.py", line 31, in copy_files
+    shutil.copy_files(source,destination)
+AttributeError: module 'shutil' has no attribute 'copy_files'
+[2022-10-12 12:53:35,140: INFO: stage_01_get_data]: 
+********************
+[2022-10-12 12:53:35,140: INFO: stage_01_get_data]: >>>>> stage one started <<<<<
+[2022-10-12 12:53:35,145: INFO: common]: yaml file : configs/config.yaml loaded successfully
+[2022-10-12 12:53:35,157: INFO: common]: created directory at : data/cat
+[2022-10-12 12:54:30,311: INFO: common]: copy of files succeeded
+[2022-10-12 12:54:30,474: INFO: common]: created directory at : data/dog
+[2022-10-12 12:55:16,139: INFO: common]: copy of files succeeded
+[2022-10-12 12:55:16,202: INFO: stage_01_get_data]: >>>>> stage one completed! all the data are saved in local<<<<<
+
+[2022-10-12 13:03:05,389: INFO: stage_01_get_data]: 
+********************
+[2022-10-12 13:03:05,390: INFO: stage_01_get_data]: >>>>> stage one started <<<<<
+[2022-10-12 13:03:05,397: INFO: common]: yaml file : configs/config.yaml loaded successfully
+[2022-10-12 13:03:05,413: INFO: common]: created directory at : data/cat
+[2022-10-12 13:03:14,129: INFO: common]: copy of files succeeded
+[2022-10-12 13:03:14,160: INFO: common]: created directory at : data/dog
+[2022-10-12 13:03:22,514: INFO: common]: copy of files succeeded
+[2022-10-12 13:03:22,966: INFO: stage_01_get_data]: >>>>> stage one completed! all the data are saved in local<<<<<
+
+[2022-10-12 13:23:48,302: INFO: stage_01_get_data]: 
+********************
+[2022-10-12 13:23:48,303: INFO: stage_01_get_data]: >>>>> stage one started <<<<<
+[2022-10-12 13:23:48,307: INFO: common]: yaml file : configs/config.yaml loaded successfully
+[2022-10-12 13:23:48,313: INFO: common]: created directory at : data/cat
+[2022-10-12 13:23:52,313: INFO: common]: copy of files succeeded
+[2022-10-12 13:23:52,313: INFO: common]: created directory at : data/dog
+[2022-10-12 13:23:55,375: INFO: common]: copy of files succeeded
+[2022-10-12 13:23:55,386: INFO: stage_01_get_data]: >>>>> stage one completed! all the data are saved in local<<<<<
+
