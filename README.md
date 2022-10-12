@@ -1,7 +1,7 @@
 # DVC-CNN-TF-pipeline
 DVC project for Deep Learning usecase using tensorflow
 
-## STEPS -
+## STEPS 
 
 ### STEP 01- Create a repository by using template repository
 
@@ -32,3 +32,6 @@ dvc init
 ```
 
 ### STEP 06- commit and push the changes to the remote repository
+```bash
+git add . && git commit -m "commit message" && git push origin main
+```
