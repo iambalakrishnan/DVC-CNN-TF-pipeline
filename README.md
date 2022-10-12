@@ -35,3 +35,7 @@ dvc init
 ```bash
 git add . && git commit -m "commit message" && git push origin main
 ```
+
+## Project structure -
+
+<img src="https://github.com/iambalakrishnan/DVC-CNN-TF-pipeline/blob/main/docs/images/DVC-CNN-pipeline@2x.png" alt="workflow" width="70%">
