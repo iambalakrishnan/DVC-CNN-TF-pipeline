@@ -5,7 +5,7 @@ from tqdm import tqdm
 import logging
 from src.utils.common import read_yaml, create_directories, copy_files
 
-
+STAGE = "ONE" ## <<< change stage name 
 
 logging.basicConfig(
     filename=os.path.join("logs", "running_logs.log"),
@@ -15,6 +15,11 @@ logging.basicConfig(
 )
 
 def get_data(config_path: str) -> None:
+    """get the image data from source to the present working director
+
+    Args:
+        config_path (str): path to config file
+    """
     config = read_yaml(config_path)
 
     source_download_dirs = config["source_download_dirs"]
@@ -38,9 +43,9 @@ if __name__ == '__main__':
 
     try:
         logging.info("\n********************")
-        logging.info(f">>>>> stage one started <<<<<")
+        logging.info(f">>>>> stage {STAGE} started <<<<<")
         get_data(config_path=parsed_args.config)
-        logging.info(f">>>>> stage one completed! all the data are saved in local<<<<<\n")
+        logging.info(f">>>>> stage {STAGE} completed! all the data are saved in local<<<<<\n")
     except Exception as e:
         logging.exception(e)
         raise e

@@ -57,3 +57,13 @@ AttributeError: module 'shutil' has no attribute 'copy_files'
 [2022-10-12 13:23:55,375: INFO: common]: copy of files succeeded
 [2022-10-12 13:23:55,386: INFO: stage_01_get_data]: >>>>> stage one completed! all the data are saved in local<<<<<
 
+[2022-10-12 14:22:58,242: INFO: stage_01_get_data]: 
+********************
+[2022-10-12 14:22:58,242: INFO: stage_01_get_data]: >>>>> stage one started <<<<<
+[2022-10-12 14:22:58,252: INFO: common]: yaml file : configs/config.yaml loaded successfully
+[2022-10-12 14:22:58,319: INFO: common]: created directory at : data/cat
+[2022-10-12 14:23:27,045: INFO: common]: copy of files succeeded
+[2022-10-12 14:23:27,060: INFO: common]: created directory at : data/dog
+[2022-10-12 14:23:52,611: INFO: common]: copy of files succeeded
+[2022-10-12 14:23:52,615: INFO: stage_01_get_data]: >>>>> stage one completed! all the data are saved in local<<<<<
+
