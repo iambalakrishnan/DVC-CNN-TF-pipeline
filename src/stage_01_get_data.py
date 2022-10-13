@@ -20,6 +20,7 @@ def get_data(config_path: str) -> None:
     Args:
         config_path (str): path to config file
     """
+    
     config = read_yaml(config_path)
 
     source_download_dirs = config["source_download_dirs"]

@@ -29,7 +29,7 @@ def copy_files(source_download_dir: str, local_data_dir: str) -> None:
 
         shutil.copy(source,destination)
     
-    logging.info(f"copy of files succeeded")
+    logging.info(f"All the files has been copied from {source_download_dir} to {local_data_dir}")
 
 
 def save_json(path: str, data: dict) -> None:
