@@ -1,7 +1,14 @@
-from pickletools import optimize
-from keras.api._v2.keras import metrics
 import tensorflow as tf
 import logging
+import io
+
+def _get_model_summary(model):
+    with io.StringIO() as stream:
+        model.summary(
+            print_fn=lambda x: stream.write(f"{x}\n")
+        )
+        summary_str = stream.getvalue()
+    return summary_str
 
 def get_VGG16_model(input_shape: list, model_path: str) -> tf.keras.models.Model:
     """saving and returning the base model extractd from VGG16 model
@@ -19,8 +26,10 @@ def get_VGG16_model(input_shape: list, model_path: str) -> tf.keras.models.Model
         weights='imagenet',
         include_top=False)
     
+    logging.info(f"VGG16 base model summary :\n{_get_model_summary(model)}")
     model.save(model_path)
     logging.info(f"VGG16 base model saved at : {model_path} ")
+
     return model
 
 def prepare_full_model(base_model, learning_rate,CLASSES = 2, freeze_all=True, freeze_till=None) -> tf.keras.models.Model:
@@ -64,7 +73,8 @@ def prepare_full_model(base_model, learning_rate,CLASSES = 2, freeze_all=True, f
     )
 
     logging.info(f"Custom model is compiled and ready to be trained ... \n")
-    logging.info(f"full model summary {full_model.summary()}")
+    
+    logging.info(f"full model summary {_get_model_summary(full_model)}")
 
     full_model.summary()
 
