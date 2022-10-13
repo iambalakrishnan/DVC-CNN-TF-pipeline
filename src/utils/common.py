@@ -2,7 +2,7 @@ import os
 import shutil
 import yaml
 import logging
-import time
+from tqdm import tqdm
 import pandas as pd
 import json
 
@@ -20,12 +20,13 @@ def create_directories(path_to_directories: list) -> None:
         logging.info(f"created directory at : {path}")
 
 def copy_files(source_download_dir: str, local_data_dir: str) -> None:
+    
     list_of_files = os.listdir(source_download_dir)
     N = len(list_of_files)
 
-    for file in list_of_files:
-        source = os.path.join(source_download_dir, file)
-        destination = os.path.join(local_data_dir, file)
+    for filename in tqdm(list_of_files, total=N, desc=f"copying file from {source_download_dir} to {local_data_dir}", colour="green",):
+        source = os.path.join(source_download_dir, filename)
+        destination = os.path.join(local_data_dir, filename)
 
         shutil.copy(source,destination)
     

@@ -20,18 +20,18 @@ def get_data(config_path: str) -> None:
     Args:
         config_path (str): path to config file
     """
-    
+
     config = read_yaml(config_path)
 
     source_download_dirs = config["source_download_dirs"]
     local_data_dirs = config["local_data_dirs"]
 
-    #N = len(source_download_dirs)
+    N = len(source_download_dirs)
     for source_download_dir, local_data_dir in tqdm(
         zip(source_download_dirs, local_data_dirs),
-        total=2,
+        total=N,
         colour="red",
-        desc="list of the folders",
+        desc="copying directory: ",
     ):
         create_directories([local_data_dir])
         copy_files(source_download_dir, local_data_dir)
