@@ -3,13 +3,7 @@ import joblib
 import tensorflow as tf
 import time
 import logging
-
-
-def get_timestamp(name: str) -> str:
-
-    timestamp = time.asctime().replace(" ", "_").replace(":",".")
-    unique_name = f"{name}_at_{timestamp}"
-    return unique_name
+from src.utils.common import get_timestamp
 
 
 def create_and_save_tensorboard_callbacks(callbacks_dir: str, tensorboard_log_dir: str) -> None:

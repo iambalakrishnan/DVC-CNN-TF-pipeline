@@ -4,9 +4,17 @@ import yaml
 import logging
 from tqdm import tqdm
 import pandas as pd
-import json
+import time
 
 def read_yaml(path_to_yaml: str) -> dict:
+    """_summary_
+
+    Args:
+        path_to_yaml (str): _description_
+
+    Returns:
+        dict: _description_
+    """
     with open(path_to_yaml) as yaml_file:
         content = yaml.safe_load(yaml_file)
 
@@ -14,12 +22,23 @@ def read_yaml(path_to_yaml: str) -> dict:
     return content
 
 def create_directories(path_to_directories: list) -> None:
+    """_summary_
+
+    Args:
+        path_to_directories (list): _description_
+    """
     for path in path_to_directories:
         os.makedirs(path, exist_ok=True)
 
         logging.info(f"created directory at : {path}")
 
 def copy_files(source_download_dir: str, local_data_dir: str) -> None:
+    """_summary_
+
+    Args:
+        source_download_dir (str): _description_
+        local_data_dir (str): _description_
+    """
     
     list_of_files = os.listdir(source_download_dir)
     N = len(list_of_files)
@@ -43,3 +62,5 @@ def get_timestamp(name: str) -> str:
     timestamp = time.asctime().replace(" ", "_").replace(":", ".")
     unique_name = f"{name}_at_{timestamp}"
     return unique_name
+
+
