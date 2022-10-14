@@ -33,8 +33,13 @@ def copy_files(source_download_dir: str, local_data_dir: str) -> None:
     logging.info(f"All the files has been copied from {source_download_dir} to {local_data_dir}")
 
 
-def save_json(path: str, data: dict) -> None:
-    with open(path, "w") as f:
-        json.dump(data, f, indent=4)
-
-    logging.info(f"json file saved at : {path}")
+def get_timestamp(name: str) -> str:
+    """create unique name with timestamp
+    Args:
+        name (str): name of file or directory
+    Returns:
+        str: unique name with timestamp
+    """
+    timestamp = time.asctime().replace(" ", "_").replace(":", ".")
+    unique_name = f"{name}_at_{timestamp}"
+    return unique_name
