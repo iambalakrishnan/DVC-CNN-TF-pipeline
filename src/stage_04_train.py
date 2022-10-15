@@ -1,7 +1,8 @@
 import argparse
 import os
+from tqdm import tqdm
 import logging
-from src.utils.common import read_yaml, create_directories, get_timestamp
+from src.utils.common import read_yaml, create_directories
 from src.utils.model import load_full_model, get_unqique_path_to_save_model
 from src.utils.callbacks import get_callbacks
 from src.utils.data_management import train_valid_generator
@@ -30,8 +31,7 @@ def train_model(config_path: str, params_path: str) -> None:
     train_model_dir_path = os.path.join(artifacts_dir, artifacts["TRAINED_MODEL_DIR"])
     create_directories([train_model_dir_path])
 
-    untrained_full_model_path = os.path.join(artifacts_dir, 
-    artifacts["BASE_MODEL_DIR"], artifacts["UPDATED_BASE_MODEL_NAME"])
+    untrained_full_model_path = os.path.join(artifacts_dir, artifacts["BASE_MODEL_DIR"], artifacts["UPDATED_BASE_MODEL_NAME"])
 
     model = load_full_model(untrained_full_model_path)
 
@@ -44,24 +44,23 @@ def train_model(config_path: str, params_path: str) -> None:
 
     train_generator, valid_generator = train_valid_generator(
         data_dir=artifacts["DATA_DIR"],
-        IMAGE_SIZE=(params["IMAGE_SIZE"][:-1]),
+        IMAGE_SIZE=tuple(params["IMAGE_SIZE"][:-1]),
         BATCH_SIZE=params["BATCH_SIZE"],
         do_data_augmention=params["AUGMENTATION"]
     )
 
     ### train the model
-
     steps_per_epoch = train_generator.samples // train_generator.batch_size
     validation_steps = valid_generator.samples // valid_generator.batch_size
 
     model.fit(
         train_generator, 
-    validation_data=valid_generator,
-    epochs=params["EPOCHS"],
-    steps_per_epoch=steps_per_epoch,
-    validation_steps=validation_steps,
-    callbacks=callbacks
-    )
+        validation_data=valid_generator, 
+        epochs=params["EPOCHS"], 
+        steps_per_epoch=steps_per_epoch, 
+        validation_steps=validation_steps, 
+        callbacks=callbacks
+        )
 
     ### save the trained model
     trained_model_dir = os.path.join(artifacts_dir, artifacts["TRAINED_MODEL_DIR"])
@@ -70,7 +69,7 @@ def train_model(config_path: str, params_path: str) -> None:
     model_file_path = get_unqique_path_to_save_model(trained_model_dir)
     model.save(model_file_path)
 
-    logging.info(f"trained model is saved at : \n{model_file_path}")
+    logging.info(f"trained models is saved at: \n{model_file_path}")
     
 
 

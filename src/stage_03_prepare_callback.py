@@ -18,10 +18,13 @@ logging.basicConfig(
     )
 
 
-def prepare_callbacks(config_path):
-    ## read config files
+def prepare_callbacks(config_path: str) -> None:
+    """prepare and save callbacks as binary
+    Args:
+        config_path (str): path to configuration file
+    """
     config = read_yaml(config_path)
-    
+
     artifacts = config["artifacts"]
     artifacts_dir = artifacts["ARTIFACTS_DIR"]
 
@@ -31,13 +34,14 @@ def prepare_callbacks(config_path):
 
     callbacks_dir = os.path.join(artifacts_dir, artifacts["CALLBACKS_DIR"])
 
-    create_directories([tensorboard_log_dir, checkpoint_dir, callbacks_dir])
+    create_directories([
+        tensorboard_log_dir,
+        checkpoint_dir,
+        callbacks_dir
+    ])
 
-    # unique_log = time.asctime()
-    # print(unique_log)
-
-    #tensorboard callbacks
     create_and_save_tensorboard_callbacks(callbacks_dir, tensorboard_log_dir)
+
     create_and_save_checkpointing_callbacks(callbacks_dir, checkpoint_dir)
 
     

@@ -7,13 +7,12 @@ import pandas as pd
 import time
 
 def read_yaml(path_to_yaml: str) -> dict:
-    """_summary_
-
+    """it reads yaml file into dictionory
     Args:
-        path_to_yaml (str): _description_
+        path_to_yaml_file (str): path of the yaml sikh with different agendars
 
     Returns:
-        dict: _description_
+        dict: returns the key-value pair from yaml file
     """
     with open(path_to_yaml) as yaml_file:
         content = yaml.safe_load(yaml_file)
@@ -22,10 +21,10 @@ def read_yaml(path_to_yaml: str) -> dict:
     return content
 
 def create_directories(path_to_directories: list) -> None:
-    """_summary_
+    """Responsible for creating directories whenerver required
 
     Args:
-        path_to_directories (list): _description_
+        path_to_directories (list): path of the directory to be created
     """
     for path in path_to_directories:
         os.makedirs(path, exist_ok=True)
@@ -33,11 +32,11 @@ def create_directories(path_to_directories: list) -> None:
         logging.info(f"created directory at : {path}")
 
 def copy_files(source_download_dir: str, local_data_dir: str) -> None:
-    """_summary_
-
+    """Copies file from source to destination directory
+    
     Args:
-        source_download_dir (str): _description_
-        local_data_dir (str): _description_
+        source_data_dir (str): source data directory
+        local_data_dir (str): local data directory
     """
     
     list_of_files = os.listdir(source_download_dir)

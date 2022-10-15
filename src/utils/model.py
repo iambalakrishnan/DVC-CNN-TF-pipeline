@@ -5,6 +5,14 @@ import os
 from src.utils.common import get_timestamp
 
 def _get_model_summary(model):
+    """To print model summary in log file
+
+    Args:
+        model (model): model
+
+    Returns:
+        _type_: summry of the model 
+    """
     with io.StringIO() as stream:
         model.summary(
             print_fn=lambda x: stream.write(f"{x}\n")
@@ -85,13 +93,13 @@ def prepare_full_model(base_model, learning_rate,CLASSES = 2, freeze_all=True, f
 
 
 def load_full_model(untrained_full_model_path: str) -> tf.keras.models.Model:
-    """_summary_
+    """To load untrained full model
 
     Args:
-        untrained_full_model_path (str): _description_
+        untrained_full_model_path (str): untrained model path
 
     Returns:
-        tf.keras.models.Model: _description_
+        tf.keras.models.Model: untrained model
     """
     model = tf.keras.models.load_model(untrained_full_model_path)
     logging.info(f"untrained models is read from: {untrained_full_model_path}")
@@ -99,14 +107,14 @@ def load_full_model(untrained_full_model_path: str) -> tf.keras.models.Model:
     return model
 
 def get_unqique_path_to_save_model(trained_model_dir: str, model_name: str = "model") -> str:
-    """_summary_
+    """unique path to save the trained model
 
     Args:
-        trained_model_dir (str): _description_
-        model_name (str, optional): _description_. Defaults to "model".
+        trained_model_dir (str): trained model to be saved
+        model_name (str, optional): name of the model. Defaults to "model".
 
     Returns:
-        str: _description_
+        str: unique path
     """
     timestamp = get_timestamp(name=model_name)
     unique_model_name = f"{timestamp}_.h5"
